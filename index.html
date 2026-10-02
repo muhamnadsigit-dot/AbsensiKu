@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AbsensiKu - Absensi Karyawan Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">AK</div>
+      <div>
+        <h1>AbsensiKu</h1>
+        <span>Absensi Karyawan Online</span>
+      </div>
+    </div>
+    <div class="date-box" id="currentDate"></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SELALU ADA UNTUK ANDA</p>
+        <h2>Kelola Absensi Jadi Lebih <span>Praktis</span></h2>
+        <p class="hero-text">
+          Pantau kehadiran, jadwal kerja, karyawan, dan progres pekerjaan
+          dalam satu aplikasi sederhana.
+        </p>
+      </div>
+      <div class="hero-icon">✓</div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span>Total Karyawan</span>
+        <strong id="totalEmployees">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Hadir Hari Ini</span>
+        <strong id="presentToday">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Terlambat</span>
+        <strong id="lateToday">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Progres Rata-rata</span>
+        <strong id="avgProgress">0%</strong>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card attendance-card">
+        <div class="card-header">
+          <div>
+            <h3>Absensi Hari Ini</h3>
+            <p>Catat kehadiran karyawan secara cepat.</p>
+          </div>
+          <button class="primary-btn" id="addAttendanceBtn">+ Absensi</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Jam Masuk</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="attendanceTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>Jadwal Kerja</h3>
+            <p>Jadwal kerja karyawan hari ini.</p>
+          </div>
+        </div>
+        <div id="scheduleList" class="schedule-list"></div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>Daftar Karyawan</h3>
+            <p>Data karyawan yang terdaftar.</p>
+          </div>
+          <button class="secondary-btn" id="addEmployeeBtn">+ Karyawan</button>
+        </div>
+        <div id="employeeList" class="employee-list"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>Progres Pekerjaan</h3>
+            <p>Pantau progres pekerjaan setiap karyawan.</p>
+          </div>
+        </div>
+        <div id="progressList" class="progress-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="attendanceModal">
+    <div class="modal-box">
+      <button class="close-btn" data-close="attendanceModal">&times;</button>
+      <h3>Tambah Absensi</h3>
+      <label>Karyawan</label>
+      <select id="attendanceEmployee"></select>
+
+      <label>Status</label>
+      <select id="attendanceStatus">
+        <option value="Hadir">Hadir</option>
+        <option value="Terlambat">Terlambat</option>
+        <option value="Izin">Izin</option>
+        <option value="Alpa">Alpa</option>
+      </select>
+
+      <label>Jam Masuk</label>
+      <input type="time" id="attendanceTime">
+
+      <button class="primary-btn full" id="saveAttendanceBtn">Simpan Absensi</button>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="employeeModal">
+    <div class="modal-box">
+      <button class="close-btn" data-close="employeeModal">&times;</button>
+      <h3>Tambah Karyawan</h3>
+      <label>Nama</label>
+      <input type="text" id="employeeName" placeholder="Contoh: Andi Saputra">
+
+      <label>Jabatan</label>
+      <input type="text" id="employeeRole" placeholder="Contoh: Staff">
+
+      <label>Progres Pekerjaan (%)</label>
+      <input type="number" id="employeeProgress" min="0" max="100" value="0">
+
+      <button class="primary-btn full" id="saveEmployeeBtn">Tambah Karyawan</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>AbsensiKu &copy; 2026 — Prototype sederhana untuk review.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
